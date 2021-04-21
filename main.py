@@ -88,7 +88,8 @@ def roundAll(list):
                 list[i] = int(list[i])
     except ValueError:
         list = [] #error handle so it doesn't add
-
+    if max(list) > 100 or min(list)<0:
+        list = []
     return list
 
 grades = []  #list that stores grades
@@ -112,7 +113,6 @@ heading5.grid(column = 0, row = 4)
 #calculation functions
 def average(classSpot, list): #returns average
     adder = 0
-    print(list)
     for i in range(len(list)):
         adder += list[i][classSpot]
     return adder/len(list)
@@ -143,14 +143,50 @@ programming5.grid(column = 1, row = 4)
 
 #art display
 art1 = Label(mainWindow, text = "Art")
-art1.grid(column = 1, row = 0)
+art1.grid(column = 2, row = 0)
 art2 = Label(mainWindow, text = str(len(grades)))
-art2.grid(column = 1, row = 1)
+art2.grid(column = 2, row = 1)
 art3 = Label(mainWindow, text = str(average(1,grades)))
-art3.grid(column = 1, row = 2)
+art3.grid(column = 2, row = 2)
 art4 = Label(mainWindow, text = str(maxGrade(1,grades)))
-art4.grid(column = 1, row = 3)
+art4.grid(column = 2, row = 3)
 art5 = Label(mainWindow, text = str(minGrade(1,grades)))
-art5.grid(column = 1, row = 4)
+art5.grid(column = 2, row = 4)
+
+#science
+science1 = Label(mainWindow, text = "Science")
+science1.grid(column = 3, row = 0)
+science2 = Label(mainWindow, text = str(len(grades)))
+science2.grid(column = 3, row = 1)
+science3 = Label(mainWindow, text = str(average(2,grades)))
+science3.grid(column = 3, row = 2)
+science4 = Label(mainWindow, text = str(maxGrade(2,grades)))
+science4.grid(column = 3, row = 3)
+science5 = Label(mainWindow, text = str(minGrade(2,grades)))
+science5.grid(column = 3, row = 4)
+
+#math
+math1 = Label(mainWindow, text = "Math")
+math1.grid(column = 4, row = 0)
+math2 = Label(mainWindow, text = str(len(grades)))
+math2.grid(column = 4, row = 1)
+math3 = Label(mainWindow, text = str(average(3,grades)))
+math3.grid(column = 4, row = 2)
+math4 = Label(mainWindow, text = str(maxGrade(3,grades)))
+math4.grid(column = 4, row = 3)
+math5 = Label(mainWindow, text = str(minGrade(3,grades)))
+math5.grid(column = 4, row = 4)
+
+#history
+history1 = Label(mainWindow, text = "History")
+history1.grid(column = 5, row = 0)
+history2 = Label(mainWindow, text = str(len(grades)))
+history2.grid(column = 5, row = 1)
+history3 = Label(mainWindow, text = str(average(4,grades)))
+history3.grid(column = 5, row = 2)
+history4 = Label(mainWindow, text = str(maxGrade(4,grades)))
+history4.grid(column = 5, row = 3)
+history5 = Label(mainWindow, text = str(minGrade(4,grades)))
+history5.grid(column = 5, row = 4)
 
 mainWindow.mainloop()
