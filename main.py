@@ -67,7 +67,7 @@ def addAnother(): #store values in list, destroy, and then create entrypanes aga
     global history
     holder = [programming.get(), art.get(), science.get(), math.get(), history.get()]
     holder = roundAll(holder)
-    grades.append(holder)
+    grades.append(holder)#it would be more efficent to have each class have its own list; future development
 
     entryWindow.destroy()
     entryPanes()
@@ -103,12 +103,23 @@ heading5 = Label(mainWindow, text = "Low Score:")
 heading5.grid(column = 0, row = 4)
 
 #calculation functions
-def average(classSpot, list):
+def average(classSpot, list): #returns average
     adder = 0
     for i in range(len(list)):
         adder += list[i][classSpot]
     return adder/len(list)
 
+def maxGrade(classSpot, list): #returns max from class spot in list
+    holder = []
+    for i in range(len(list)):
+        holder.append(list[i][classSpot])
+    return max(holder)
+
+def minGrade(classSpot, list): #returns minimum from class spot in list
+    holder = []
+    for i in range(len(list)):
+        holder.append(list[i][classSpot])
+    return min(holder)
 
 #programming display
 programming1 = Label(mainWindow, text = "Programming")
@@ -117,7 +128,19 @@ programming2 = Label(mainWindow, text = str(len(grades)))
 programming2.grid(column = 1, row = 1)
 programming3 = Label(mainWindow, text = str(average(0,grades)))
 programming3.grid(column = 1, row = 2)
-programming4 = Label(mainWindow, text = "High Score:")
+programming4 = Label(mainWindow, text = str(maxGrade(0,grades)))
 programming4.grid(column = 1, row = 3)
-programming5 = Label(mainWindow, text = "Low Score:")
+programming5 = Label(mainWindow, text = str(minGrade(0,grades)))
 programming5.grid(column = 1, row = 4)
+
+#art display
+art1 = Label(mainWindow, text = "Art")
+art1.grid(column = 1, row = 0)
+art2 = Label(mainWindow, text = str(len(grades)))
+art2.grid(column = 1, row = 1)
+art3 = Label(mainWindow, text = str(average(1,grades)))
+art3.grid(column = 1, row = 2)
+art4 = Label(mainWindow, text = str(maxGrade(1,grades)))
+art4.grid(column = 1, row = 3)
+art5 = Label(mainWindow, text = str(minGrade(1,grades)))
+art5.grid(column = 1, row = 4)
