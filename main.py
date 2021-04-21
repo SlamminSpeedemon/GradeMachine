@@ -64,7 +64,8 @@ def store(): #store values in list and destroy
     global returnToMainLoop
     holder = [programming.get(), art.get(), science.get(), math.get(), history.get()]
     holder = roundAll(holder)
-    grades.append(holder)
+    if len(holder) > 3: #make sure it was error handled
+        grades.append(holder)#it would be more efficent to have each class have its own list; future development
 
     entryWindow.destroy()
     mainWindowFunction()
@@ -201,6 +202,7 @@ def mainWindowFunction():
     addMore = Button(mainWindow, text="Add more students", command=lambda: addMoreAgain())
     addMore.grid(column=0, row=5, columnspan=3)
     exitButton = Button(mainWindow, text="exit",command=lambda:exit())
+    exitButton.grid(column = 4, row = 5)
 
     mainWindow.mainloop()
 
