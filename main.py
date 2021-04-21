@@ -52,7 +52,7 @@ def store(): #store values in list and destroy
     global science
     global math
     global history
-    holder = [programming.get(),art.get(),science.get(),math.get(),history.get()]
+    holder = [programming.get(), art.get(), science.get(), math.get(), history.get()]
     holder = roundAll(holder)
     grades.append(holder)
 
@@ -67,7 +67,8 @@ def addAnother(): #store values in list, destroy, and then create entrypanes aga
     global history
     holder = [programming.get(), art.get(), science.get(), math.get(), history.get()]
     holder = roundAll(holder)
-    grades.append(holder)#it would be more efficent to have each class have its own list; future development
+    if len(holder) > 3: #make sure it was error handled
+        grades.append(holder)#it would be more efficent to have each class have its own list; future development
 
     entryWindow.destroy()
     entryPanes()
@@ -76,12 +77,18 @@ def done():
     entryWindow.destroy()
 
 def roundAll(list):
-    for i in range(len(list)):
-        if list[i] % 1 >= 0.5:
-            list[i] += 0.5
-            list[i] = int(list[i])
-        else:
-            list[i] = int(list[i])
+    try:
+        for x in range(len(list)):
+            list[x] = float(list[x])
+        for i in range(len(list)):
+            if list[i] % 1 >= 0.5:
+                list[i] += 0.5
+                list[i] = int(list[i])
+            else:
+                list[i] = int(list[i])
+    except ValueError:
+        list = [] #error handle so it doesn't add
+
     return list
 
 grades = []  #list that stores grades
@@ -105,6 +112,7 @@ heading5.grid(column = 0, row = 4)
 #calculation functions
 def average(classSpot, list): #returns average
     adder = 0
+    print(list)
     for i in range(len(list)):
         adder += list[i][classSpot]
     return adder/len(list)
@@ -144,3 +152,5 @@ art4 = Label(mainWindow, text = str(maxGrade(1,grades)))
 art4.grid(column = 1, row = 3)
 art5 = Label(mainWindow, text = str(minGrade(1,grades)))
 art5.grid(column = 1, row = 4)
+
+mainWindow.mainloop()
