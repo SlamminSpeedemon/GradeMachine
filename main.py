@@ -87,6 +87,7 @@ def addAnother(): #store values in list, destroy, and then create entrypanes aga
 
 def done():
     entryWindow.destroy()
+    mainWindowFunction()
 
 def roundAll(list):
     try:
